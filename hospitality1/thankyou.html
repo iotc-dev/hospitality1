@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanks, your site consultation is booked | MODA</title>
+<meta name="description" content="Thanks for booking a MODA site consultation. A specialist will be in touch to arrange a time to see your venue.">
+<meta name="robots" content="noindex, follow">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon_48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon_64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon_128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon_256x256.png">
+<link rel="apple-touch-icon" sizes="256x256" href="favicon_256x256.png">
+
+<!-- REPLACE DOMAIN: must match index.html and privacy.html. -->
+<link rel="canonical" href="https://example.com.au/thankyou.html">
+
+<link rel="icon" href="assets/img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- Uncomment once the Matter woff2 files are sitting in /assets/fonts/.
+     Preloading them before they exist fires a 404 on every page load.
+<link rel="preload" href="assets/fonts/Matter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Matter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+-->
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Same inline block as index.html so the wordmark renders identically.
+     Move it into assets/css/styles.css whenever suits. -->
+<style>
+  .footer__mark { line-height: 0; }
+  .footer__logo {
+    display: block;
+    width: auto;
+    height: clamp(28px, 4vw, 38px);
+  }
+</style>
+
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to the content</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="masthead__mark" href="index.html" aria-label="MODA, home">
+      <img class="masthead__logo" src="assets/img/modalogo.webp" alt="MODA"
+           width="2251" height="588">
+    </a>
+    <div class="masthead__cta">
+      <a class="btn btn--sm btn--ghost" id="tel-header" href="tel:+611800006632">1800 006 632</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- This page is the conversion destination. A GTM trigger can fire on
+       the page path alone, so no tag is needed in this source. -->
+  <div class="wrap wrap--narrow thanks">
+    <h1>Thanks, that is booked in.</h1>
+    <p class="section__sub">A MODA specialist will be in touch to arrange a time to come and see your venue. We will ask about your space, your service and your peak, so the visit is useful rather than a sales call.</p>
+    <p>If you would rather talk now:
+      <a href="tel:+611800006632">1800 006 632</a>
+    </p>
+    <p><a class="btn btn--ghost" href="index.html">Back to the main page</a></p>
+  </div>
+</main>
+
+<!-- ============================================================
+     FOOTER, matched to index.html
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__top">
+
+      <div class="col">
+        <p class="footer__mark">
+          <img class="footer__logo" src="assets/img/modalogo.webp" alt="MODA"
+               width="2251" height="588" loading="lazy">
+        </p>
+        <p class="col__row"><span class="lbl">Legal / trading name</span>Water Vend Pty Ltd</p>
+        <p class="col__row"><span class="lbl">ABN</span>15 145 358 836</p>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Contact</h2>
+        <p class="col__row"><span class="lbl">Phone</span><a id="tel-footer" href="tel:+611800006632">1800 006 632</a></p>
+        <p class="col__row"><span class="lbl">Email, national</span><a href="mailto:info@modawater.com">info@modawater.com</a></p>
+        <p class="col__row"><span class="lbl">VIC &amp; SA</span><a href="mailto:vic@modawater.com">vic@modawater.com</a></p>
+        <p class="col__row"><span class="lbl">NSW, ACT, WA &amp; TAS</span><a href="mailto:hello@modawater.com">hello@modawater.com</a></p>
+        <p class="col__row"><span class="lbl">QLD</span><a href="mailto:qld@modawater.com">qld@modawater.com</a></p>
+        <p class="col__row"><span class="lbl">Address</span>15 Tenterden Rd, Botany NSW 2019</p>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Follow</h2>
+        <p class="col__row"><a href="https://instagram.com/moda.water" rel="noopener">Instagram</a></p>
+        <p class="col__row"><a href="https://facebook.com/moda.water" rel="noopener">Facebook</a></p>
+        <p class="col__row"><a href="https://linkedin.com/company/modawater" rel="noopener">LinkedIn</a></p>
+        <p class="col__row"><a href="https://share.google/PyXbDDXTpH6Lkrqee" rel="noopener">Google Business Profile</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <ul class="footer__links">
+        <li><a href="privacy.html">Privacy policy</a></li>
+      </ul>
+      <p class="footer__copy">&copy; <span id="year">2026</span> Water Vend Pty Ltd</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

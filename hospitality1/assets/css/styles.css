@@ -1,0 +1,869 @@
+/* =============================================================
+   MODA hospitality landing page
+   -------------------------------------------------------------
+   Base styles ARE the mobile styles. Media queries only widen.
+
+   00. Tokens
+   01. Fonts
+   02. Reset and base
+   03. Typography helpers
+   04. Buttons
+   05. Layout bands and wrappers
+   06. Image slots
+   07. Placeholders
+   08. Masthead
+   09. Hero
+   10. Forms
+   11. Social proof
+   12. Venue cards
+   13. How it works
+   14. What the fee covers
+   15. Service is our difference
+   15b. Your one stop water shop
+   16. Trust signals
+   17. FAQ accordion
+   18. Bottom CTA
+   19. Footer
+   20. Sticky bar
+   21. Privacy and thank you pages
+   22. Reduced motion
+   ============================================================= */
+
+
+/* 00. Tokens ------------------------------------------------- */
+:root{
+  /* Colour. Sage updated to #97AFAD per client. The rest sampled from
+     the MODA site screenshots. Replace if exact brand values exist. */
+  --ink:        #0D0D0D;
+  --ink-band:   #101413;   /* green-cast near-black, so the dark band relates to the sage */
+  --sage:       #97AFAD;
+  --sage-deep:  #97AFAD;
+  --sage-hover: #819E9C;   /* darkened sage for button hover states */
+  --paper:      #FFFFFF;
+  --paper-alt:  #E5EDEC;   /* page canvas, warmed slightly off the old clinical grey */
+  --line:       #C8D2D0;
+  /* Wire rim on the form cards. Light from the top right, falling to a dark
+     grey at the lower left, then catching again in the bottom corner. */
+  --rim: linear-gradient(225deg,#ffffff 0%,#e9ebee 20%,#b0b6bd 42%,#828892 62%,#9aa0a8 78%,#d3d7db 100%);
+  --muted:      #4A5250;
+  --slot:       #97AFAD;
+  --flag:       #A32B12;   /* build-time only, marks unsupplied content */
+
+  /* Grain. Inline SVG, roughly 1KB, no network request. Used at very low
+     opacity on the dark surfaces so they read as printed rather than flat. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Fluting, taken from the ribbing on the glass. Masked so it fades out
+     before it reaches any text. */
+  --flute: repeating-linear-gradient(90deg, rgba(151,175,173,.07) 0 1px, transparent 1px 14px);
+
+  /* Type scale */
+  --step--2: .75rem;
+  --step--1: clamp(.8125rem, .79rem + .11vw, .875rem);
+  --step-0:  clamp(1rem, .97rem + .14vw, 1.0625rem);
+  --step-1:  clamp(1.125rem, 1.08rem + .22vw, 1.25rem);
+  --step-2:  clamp(1.3125rem, 1.24rem + .36vw, 1.5rem);
+  --step-3:  clamp(1.5rem, 1.37rem + .64vw, 1.875rem);
+  --step-4:  clamp(1.8125rem, 1.55rem + 1.3vw, 2.625rem);
+  --step-5:  clamp(2.125rem, 1.6rem + 2.6vw, 3.75rem);
+  --step-6:  clamp(2.6rem, 1.4rem + 5vw, 5.5rem);   /* statement caps only */
+
+  /* Spacing */
+  --sp-1: .5rem;
+  --sp-2: .875rem;
+  --sp-3: 1.25rem;
+  --sp-4: 2rem;
+  --sp-5: 3rem;
+  --sp-6: 4.5rem;
+
+  /* The reference site has no rounded corners anywhere. Keeping it. */
+  --radius: 0;
+  --radius-sm: 2px;
+
+  --shadow-1: 0 1px 2px rgba(13,13,13,.06);
+  --shadow-2: 0 6px 20px rgba(13,13,13,.08);
+  --shadow-3: 0 -2px 18px rgba(13,13,13,.14);
+
+  --stickybar-h: 68px;
+  /* Masthead height is fixed so the logo can be sized as a share of it.
+     Shorter on mobile, or the logo and the phone number fight for width. */
+  --masthead-h: 56px;
+}
+
+
+/* 01. Fonts -------------------------------------------------- */
+/* Matter, self-hosted. See /assets/fonts/fonts-required.md.
+   Until the woff2 files land, the fallback stack renders instead. */
+@font-face{
+  font-family:"Matter";
+  src:url("../fonts/Matter-Regular.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Matter";
+  src:url("../fonts/Matter-Medium.woff2") format("woff2");
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Matter";
+  src:url("../fonts/Matter-SemiBold.woff2") format("woff2");
+  font-weight:600; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Matter";
+  src:url("../fonts/Matter-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+
+
+/* 02. Reset and base ----------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper-alt);
+  color:var(--ink);
+  font-family:"Matter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:var(--step-0);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+/* Clears the sticky bar so it never sits over the footer. The class is added
+   by main.js only on pages that actually carry a bar. */
+body.has-stickybar{
+  padding-bottom:calc(var(--stickybar-h) + env(safe-area-inset-bottom, 0px));
+}
+h1,h2,h3,h4{margin:0 0 var(--sp-2); line-height:1.15; font-weight:600; letter-spacing:-.01em}
+p{margin:0 0 var(--sp-3)}
+ul,ol{margin:0; padding:0; list-style:none}   /* reset both, or ol markers reappear */
+img,svg{max-width:100%; height:auto; display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--ink); color:var(--paper); padding:12px 18px;
+}
+.skip-link:focus{left:0}
+
+.vh{
+  position:absolute!important; width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+}
+
+
+/* 03. Typography helpers ------------------------------------- */
+/* The square bullet label is the site's own motif. Reserved for eyebrows
+   and the trust strip only. Card headings use .h-card instead, so the mark
+   stays a signal rather than becoming wallpaper. */
+.label{
+  font-size:var(--step--2);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:600;
+  color:var(--sage-deep);
+  margin:0 0 var(--sp-1);
+  display:flex; align-items:center; gap:10px;
+}
+.label::before{content:""; width:8px; height:8px; background:currentColor; flex:0 0 auto}
+.label--empty{color:var(--flag)}
+
+/* Card and list headings. Sentence case, real heading weight. */
+.h-card{font-size:var(--step-1); letter-spacing:-.01em; margin:0 0 var(--sp-1)}
+
+.section__title{font-size:var(--step-4); letter-spacing:-.025em; margin-bottom:var(--sp-2)}
+
+/* Caps is applied here, never typed into the markup, so the content stays
+   sentence case for screen readers and for search. Short lines only, four
+   or five words. Anything longer becomes a wall. */
+.section__title--caps{
+  font-size:var(--step-6); text-transform:uppercase;
+  letter-spacing:.005em; line-height:.94; max-width:15ch;
+}
+.section__sub{font-size:var(--step-1); color:var(--muted); margin-bottom:var(--sp-4)}
+.section__sub--strong{color:var(--ink); font-weight:500}
+.prose{max-width:66ch}
+.lbl{
+  display:block; font-size:.6875rem; text-transform:uppercase;
+  letter-spacing:.09em; color:var(--muted); margin-bottom:3px;
+}
+
+
+/* 04. Buttons ------------------------------------------------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:52px; padding:14px 26px;
+  font:inherit; font-weight:600; font-size:var(--step--1);
+  text-transform:uppercase; letter-spacing:.09em;
+  text-decoration:none; text-align:center; white-space:nowrap;
+  border:2px solid var(--ink); border-radius:var(--radius-sm);
+  cursor:pointer; transition:background .15s ease, color .15s ease;
+  width:100%;                       /* full width, stacked, on mobile */
+}
+.btn--primary{background:var(--ink); color:var(--paper)}
+.btn--primary:hover{background:#000}
+.btn--ghost{background:transparent; color:var(--ink)}
+.btn--onDark{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+.btn--onDark:hover{background:#EDF0EF}
+.btn--ghost:hover{background:rgba(13,13,13,.06)}
+.btn--block{width:100%}
+.btn.is-placeholder{border-style:dashed; border-color:var(--flag); color:var(--flag)}
+/* Compact variant for the masthead, where the bar is only 56px tall on
+   mobile and 76px on desktop. Overrides the mobile full-width default. */
+.btn--sm{
+  min-height:38px; padding:9px 16px;
+  font-size:var(--step--2); letter-spacing:.07em;
+  width:auto;
+}
+
+@media (min-width:30em){
+  .btn{width:auto}
+  .btn--block{width:100%}
+}
+
+
+/* 05. Layout bands and wrappers ------------------------------- */
+.wrap{width:100%; max-width:1160px; margin:0 auto; padding:0 20px}
+.wrap--narrow{max-width:760px}
+
+.band{padding:var(--sp-5) 0; background:var(--paper-alt)}
+.band--alt{background:var(--paper)}
+.band--statement{
+  position:relative; overflow:hidden;
+  background:var(--ink-band); color:var(--paper);
+}
+.band--statement::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:var(--grain); background-size:160px 160px; opacity:.07;
+}
+.band--statement::after{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:var(--flute);
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 30%);
+  mask-image:linear-gradient(to bottom, #000 0%, transparent 30%);
+}
+.band--statement > .wrap{position:relative; z-index:2}
+.band--tight{padding:var(--sp-4) 0}
+.band--close{background:var(--paper); border-top:1px solid var(--line)}
+/* For a band ending in a full-bleed element that must meet the next one. */
+.band--flush{padding-bottom:0}
+.band__cta{margin:var(--sp-4) 0 0}
+.band__cta .btn--primary{
+  background:var(--sage); color:var(--ink); border-color:var(--sage);
+}
+.band__cta .btn--primary:hover{
+  background:var(--sage-hover); border-color:var(--sage-hover);
+}
+
+@media (min-width:48em){
+  .wrap{padding:0 32px}
+  .band{padding:var(--sp-6) 0}
+  .band--tight{padding:var(--sp-5) 0}
+}
+
+
+/* 06. Image slots -------------------------------------------- */
+.slot{
+  position:relative; overflow:hidden;
+  background:var(--slot);
+  border-radius:var(--radius);
+  aspect-ratio:var(--ratio, 4 / 3);
+}
+.slot img{width:100%; height:100%; object-fit:cover}
+.slot.is-empty img{display:none}
+/* Empty state names the file it is waiting for, so the page can be shown
+   to the client before the photography lands. */
+.slot.is-empty::after{
+  content:attr(data-caption);
+  position:absolute; inset:auto 0 0 0; padding:14px 16px;
+  font-size:var(--step--2); letter-spacing:.14em; text-transform:uppercase;
+  color:#2B3331; background:linear-gradient(transparent, rgba(151,175,173,.9));
+}
+
+
+/* 07. Placeholders ------------------------------------------- */
+/* Deliberately loud. Nothing here should ever reach a live campaign. */
+.ph{
+  display:inline-block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.75rem; line-height:1.45; font-weight:400;
+  color:var(--flag); background:rgba(255,255,255,.6);
+  border:1px dashed var(--flag); padding:5px 8px;
+  text-transform:none; letter-spacing:0;
+}
+.ph--wide{display:block; margin-top:var(--sp-3)}
+
+
+/* 08. Masthead ----------------------------------------------- */
+.masthead{
+  background:var(--sage); border-bottom:1px solid var(--sage-deep);
+  position:relative; z-index:20;
+}
+.masthead__inner{
+  max-width:1160px; margin:0 auto; padding:0 20px;
+  min-height:var(--masthead-h);
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.masthead__mark{display:flex; align-items:center; text-decoration:none}
+/* 64% of the bar height, width follows the file's 3.83:1 ratio. */
+.masthead__logo{height:calc(var(--masthead-h) * .64); width:auto}
+/* Kept for privacy.html and thank-you.html, which still carry the plain
+   tel link in the bar. The index masthead uses .masthead__cta instead. */
+.masthead__tel{
+  font-size:var(--step--1); font-weight:600; white-space:nowrap;
+  text-transform:uppercase; letter-spacing:.08em; text-decoration:none;
+  color:var(--ink);
+}
+/* Two buttons in the bar. Below 48em there is not enough width for the
+   logo and both, so the book button is hidden there and the sticky bottom
+   bar carries that CTA instead. */
+.masthead__cta{display:flex; align-items:center; gap:10px}
+.masthead__book{display:none}
+
+.masthead__book{
+  background:var(--paper); color:var(--ink); border-color:var(--paper);
+}
+.masthead__book:hover{
+  background:#EDF0EF; border-color:#EDF0EF;
+}
+
+@media (min-width:48em){
+  :root{--masthead-h:76px}
+  .masthead__inner{padding:0 32px}
+  .masthead__tel{font-size:var(--step-0)}
+  .masthead__book{display:inline-flex}
+  .masthead__cta .btn--sm{
+    min-height:44px; padding:11px 20px; font-size:var(--step--1);
+  }
+}
+
+
+/* 09. Hero ---------------------------------------------------- */
+/* Full-bleed dark header image with the copy reversed out over it.
+   The white form card sits on top and keeps the light treatment. */
+.band--hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  padding:var(--sp-5) 0;
+  background:var(--ink-band); color:var(--paper);
+}
+.hero__bg{position:absolute; inset:0; z-index:0; pointer-events:none}
+.hero__bg img{width:100%; height:100%; object-fit:cover; object-position:calc(50% + 500px) center}
+/* Scrim. Holds the contrast on the copy no matter how the photo is exposed.
+   Vertical on small screens, weighted to the left once the grid splits. */
+.hero__bg::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(16,20,19,.56), rgba(16,20,19,.42));
+}
+.band--hero > .wrap{position:relative; z-index:2}
+
+.hero{display:grid; gap:var(--sp-4)}
+.hero__copy{text-align:center}
+/* One step down from the display size so the line holds to two lines
+   at desktop width. Balance evens the two lines out. */
+.hero__title{
+  font-size:var(--step-4); letter-spacing:-.02em; text-wrap:balance;
+  margin-bottom:var(--sp-3); color:var(--paper);
+}
+.hero__sub{font-size:var(--step-1); color:rgba(255,255,255,.87); margin-bottom:var(--sp-3)}
+.hero__actions{display:grid; gap:var(--sp-2)}
+
+/* Hero buttons only. Scoped to .hero__actions so the submit button inside
+   the white form card is left alone. */
+.hero__actions .btn--primary{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+.hero__actions .btn--primary:hover{background:#EDF0EF; border-color:#EDF0EF}
+/* Slight white fill in the resting state, so the call button reads as a
+   button against the photo rather than an outline floating on it. */
+.hero__actions .btn--ghost{
+  color:var(--paper); border-color:var(--paper);
+  background:rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
+}
+.hero__actions .btn--ghost:hover{background:rgba(255,255,255,.28)}
+
+/* Certification line and logo row under the hero buttons. Centred on the
+   hero copy column at every width, with the four marks always on one line. */
+.herotrust{
+  display:flex; flex-direction:column; flex-wrap:nowrap;
+  align-items:center; justify-content:center;
+  gap:var(--sp-2); margin-top:var(--sp-4); text-align:center;
+}
+.herotrust__item{
+  margin:0;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  font-size:var(--step--2); font-weight:600;
+  text-transform:uppercase; letter-spacing:.1em; color:rgba(255,255,255,.88);
+}
+.herotrust__icon{
+  width:26px; height:26px; flex:none;
+  fill:none; stroke:var(--sage); stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.herotrust__logos{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-wrap:nowrap;
+  align-items:center; justify-content:center;
+  gap:clamp(0.75rem, 3vw, 1.5rem);
+}
+.herotrust__logos li{margin:0; min-width:0; flex:0 0 auto}
+.herotrust__logos img{
+  display:block; width:auto;
+  height:clamp(41px, 7.2vw, 58px);
+}
+.hero__copy :focus-visible{outline-color:var(--paper)}
+
+@media (min-width:48em){
+  .band--hero{padding:var(--sp-6) 0}
+  .hero__bg img{object-position:center}
+  .hero__copy{text-align:left}
+  .hero__actions{grid-auto-flow:column; justify-content:start}
+}
+@media (min-width:60em){
+  .hero__bg::after{
+    background:linear-gradient(to right, rgba(16,20,19,.60) 0%, rgba(16,20,19,.50) 55%, rgba(16,20,19,.39) 100%);
+  }
+  .hero{
+    grid-template-columns:1.05fr .95fr;
+    grid-template-areas:"copy form";
+    align-items:center; gap:var(--sp-4) var(--sp-5);
+  }
+  .hero__copy{grid-area:copy}
+  .formcard{grid-area:form}
+}
+
+
+/* 10. Forms --------------------------------------------------- */
+/* The border is transparent and filled by the rim gradient painted to the
+   border box. The hairline ring sharpens the outer edge, the offset shadow
+   drops it off the page, and the inset does the inner lip. That inset is
+   clipped to the padding box, so it lands just inside the rim without
+   needing the separate face element. */
+.formcard{
+  border:3px solid transparent; border-radius:5px;
+  background:linear-gradient(#fff,#fff) padding-box,
+             var(--rim) border-box;
+  box-shadow:inset -2px 2px 4px rgba(110,116,126,.5),
+             inset 1px -1px 2px rgba(110,116,126,.28),
+             0 0 0 1px rgba(104,110,118,.26),
+             -1px 2px 3px rgba(45,49,55,.3);
+  padding:var(--sp-3); scroll-margin-top:80px;
+  color:var(--ink);   /* the hero band sets white, the card must not inherit it */
+}
+.formcard--close{
+  background:linear-gradient(var(--paper-alt),var(--paper-alt)) padding-box,
+             var(--rim) border-box;
+}
+/* Hero card only. Sits on the photo, so it is let down to 88% with a blur
+   behind it. The close form sits on white, where transparency would do
+   nothing. Raise the alpha if a busy image shows through too much. */
+.band--hero .formcard{
+  background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)) padding-box,
+             var(--rim) border-box;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+.formcard__title{
+  font-size:var(--step-2); color:var(--ink);
+  text-transform:uppercase; letter-spacing:.02em;
+}
+.formcard__intro{color:var(--muted); font-size:var(--step--1)}
+.formcard__intro b{display:block; font-weight:inherit}
+
+.form{display:grid; gap:var(--sp-2)}
+.field{display:grid; gap:5px}
+.field label{
+  font-size:var(--step--2); font-weight:600;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--muted);
+}
+.field__opt{font-weight:400; letter-spacing:.1em; opacity:.75}
+/* Direct child only, so nothing nested in a fieldset gets stretched. */
+.field > input,
+.field > select,
+.field > textarea{
+  width:100%; min-height:48px; padding:12px 14px;
+  font:inherit; font-size:var(--step-0); color:var(--ink);
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+}
+.field > textarea{min-height:88px; resize:vertical}
+.field > select{
+  appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),
+                   linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 21px, calc(100% - 14px) 21px;
+  background-size:6px 6px, 6px 6px;
+  background-repeat:no-repeat;
+}
+.field.is-invalid > input,
+.field.is-invalid > select,
+.field.is-invalid > textarea{border-color:var(--flag); border-width:2px}
+.field__error{
+  margin:0; font-size:.75rem; color:var(--flag); font-weight:600; display:none;
+}
+.field.is-invalid .field__error{display:block}
+
+.form__foot{
+  margin:0; font-size:.75rem; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.06em; text-align:center;
+}
+/* Submit button, brand sage. Ink text rather than white, which would not
+   hold contrast on a colour this light. */
+.form .btn--primary{background:var(--sage); color:var(--ink); border-color:var(--sage)}
+.form .btn--primary:hover{background:var(--sage-hover); border-color:var(--sage-hover)}
+
+.form__done{padding:var(--sp-3) 0}
+.form__done h3{font-size:var(--step-2)}
+
+/* Honeypot. Off-screen rather than display:none so bots still fill it. */
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+
+@media (min-width:48em){
+  .formcard{padding:var(--sp-4)}
+}
+
+
+/* 11. Social proof -------------------------------------------- */
+.proof{display:grid; gap:var(--sp-4)}
+.proof__video .ph{margin-top:var(--sp-2)}
+.proof__quotes{display:grid; gap:var(--sp-3)}
+.quote{margin:0; padding:var(--sp-3); background:var(--paper-alt); border-left:4px solid var(--ink)}
+.quote blockquote{margin:0 0 var(--sp-2); font-size:var(--step-2); font-weight:500; line-height:1.3}
+.quote blockquote::before{content:"\201C"}
+.quote blockquote::after{content:"\201D"}
+.quote figcaption{font-size:var(--step--1); font-weight:600; display:grid; gap:8px; justify-items:start}
+.quote--long blockquote{font-size:var(--step-1); line-height:1.35}
+.quote__org{
+  font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted);
+}
+.quote--empty{border-left-color:var(--flag); padding:var(--sp-2)}
+.quote--empty p{margin:0}
+
+/* Client logo strip. Four across on mobile, six once there is room. */
+.logos{
+  list-style:none;
+  margin:clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  align-items:center; justify-items:center;
+  gap:1rem 0.9rem;
+}
+.logos li{
+  margin:0; width:100%;
+  display:flex; align-items:center; justify-content:center;
+}
+.logos img{
+  display:block;
+  width:100%; max-width:116px; height:auto;
+  opacity:.62;
+  mix-blend-mode:multiply;
+}
+
+@media (min-width:37.5em){
+  .logos{gap:clamp(0.9rem, 1.6vw, 1.5rem)}
+}
+@media (min-width:56.25em){
+  .logos{grid-template-columns:repeat(6, 1fr)}
+}
+@media (min-width:60em){
+  .proof{grid-template-columns:1.15fr .85fr; align-items:start; gap:var(--sp-5)}
+}
+
+
+/* 12. Venue cards --------------------------------------------- */
+/* Stacked on mobile, never a carousel. Carousels hide the venue
+   type the visitor arrived looking for. */
+.venues{display:grid; gap:var(--sp-4)}
+/* Landscape on mobile so four stacked cards do not run to three screens. */
+.venue .slot{aspect-ratio:3 / 2}
+.venue{display:grid; gap:var(--sp-2); align-content:start}
+.venue p{margin:0; color:var(--muted)}
+.venue .label{margin-top:var(--sp-1)}
+
+@media (min-width:36em){
+  .venues{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-4) var(--sp-3)}
+  .venue .slot{aspect-ratio:var(--ratio)}
+}
+@media (min-width:60em){
+  .venues{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+
+/* 13. How it works -------------------------------------------- */
+.how{display:grid; gap:var(--sp-4)}
+.steps{display:grid; gap:var(--sp-3); counter-reset:none}
+.step{
+  display:grid; gap:6px;
+  padding-top:var(--sp-2); border-top:1px solid var(--line);
+}
+.step__n{
+  font-size:var(--step--1); font-weight:700; letter-spacing:.12em; color:var(--sage-deep);
+}
+.step h3{font-size:var(--step-1); margin:0}
+.step p{margin:0; color:var(--muted)}
+
+@media (min-width:36em){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3) var(--sp-4)}
+}
+@media (min-width:60em){
+  .how{grid-template-columns:1.4fr .6fr; gap:var(--sp-5); align-items:start}
+}
+
+
+/* 14. What the fee covers ------------------------------------- */
+.includes{display:grid; gap:var(--sp-3)}
+.includes li{padding-top:var(--sp-2); border-top:1px solid var(--line)}
+.includes p{margin:0; color:var(--muted)}
+/* Material and finish swatches. Every finish is a CSS gradient, so there is
+   no image to supply. The band is white and full bleed, and the space above
+   the heading is the band's own padding rather than a margin, so no page
+   canvas shows through. Auto-fit gives three across on a phone and six on a
+   wide screen, no breakpoint. */
+.finishes-band{
+  background:var(--paper);
+  padding:var(--sp-5) 0;
+}
+.finishes__title{
+  font-size:var(--step-3); letter-spacing:-.02em;
+  margin:0 0 var(--sp-3);
+}
+.finishes{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(96px, 1fr));
+  gap:var(--sp-3);
+}
+/* Contain, not cover. Cover was cropping the edges off each swatch. */
+.finish__swatch{
+  height:auto;
+  aspect-ratio:1 / 1;
+  width:100%;
+  border:none;
+  border-radius:6px;
+  object-fit:contain;
+  display:block;
+}
+.finish__name{
+  margin:var(--sp-1) 0 0;
+  font-size:var(--step--1); font-weight:600; line-height:1.3;
+  color:var(--ink);
+}
+.finish__meta{
+  margin:0;
+  font-size:var(--step--2); line-height:1.4;
+  text-transform:uppercase; letter-spacing:.09em;
+  color:var(--muted);
+}
+
+/* Customisation sits flush against the bands above and below it, so the
+   style strip meets the swatches with no gap. */
+#customisation{padding-top:0; padding-bottom:0}
+
+/* Style strip. Full bleed, auto-scrolling, draggable. Height is fixed and
+   the image sizes to it, so one copy is always wider than the viewport and
+   the loop always has somewhere to go. */
+.stylestrip{
+  position:relative; overflow:hidden; display:block;
+  height:clamp(170px, 24vw, 300px);
+  margin:0; line-height:0;
+  background:#fff;
+  cursor:grab;
+  touch-action:pan-y;          /* horizontal drag here, vertical scroll still works */
+  user-select:none; -webkit-user-select:none;
+}
+.stylestrip.is-dragging{cursor:grabbing}
+.stylestrip__track{display:flex; width:max-content; height:100%; will-change:transform}
+.stylestrip__track img{
+  display:block; height:100%; width:auto; max-width:none;
+  pointer-events:none; -webkit-user-drag:none;
+}
+/* Same quiet empty state as the image slots, for before the file lands. */
+.stylestrip.is-missing .stylestrip__track{display:none}
+.stylestrip.is-missing::after{
+  content:"styles.jpg";
+  position:absolute; inset:auto 0 0 0; padding:14px 16px;
+  font-size:var(--step--2); letter-spacing:.14em; text-transform:uppercase;
+  color:#2B3331; background:linear-gradient(transparent, rgba(151,175,173,.9));
+}
+
+@media (min-width:36em){
+  .includes{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3) var(--sp-4)}
+}
+@media (min-width:60em){
+  .includes{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+
+/* 15. Service is our difference -------------------------------- */
+.band--statement .label{color:var(--sage)}
+.band--statement .section__sub{color:#C9D1D0}
+.band--statement .prose{color:#C9D1D0}
+.band--statement .quote{background:rgba(255,255,255,.08); border-left-color:var(--sage)}
+.team{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--sp-2); margin-top:var(--sp-4);
+}
+.team li{display:grid; gap:var(--sp-1)}
+.team__note{margin-top:var(--sp-2); background:rgba(255,255,255,.75)}
+.band--statement .slot{background:var(--sage-deep)}
+.band--statement .ph{background:rgba(255,255,255,.86)}
+.band--statement :focus-visible{outline-color:var(--paper)}
+
+@media (min-width:36em){
+  .team{gap:var(--sp-3)}
+}
+/* Three portraits at full wrap width read as oversized next to the copy,
+   so the grid is held to 60% from the desktop breakpoint. */
+@media (min-width:60em){
+  .team{max-width:60%}
+}
+
+
+/* 15b. Your one stop water shop -------------------------------- */
+/* Breadth signal, not a persuasion section, so it runs at lower
+   density than the venue cards above: square crops, smaller card
+   headings and reduced band padding. Numbered 15b so the sections
+   below keep their existing numbers. */
+.band--range{padding:var(--sp-4) 0}
+.products{display:grid; gap:var(--sp-3)}
+.product{display:grid; gap:10px; align-content:start}
+/* Landscape on mobile so six stacked cards do not run to three screens. */
+.product .slot{aspect-ratio:3 / 2}
+.product .h-card{font-size:var(--step-0); margin:0}
+.product p{margin:0; color:var(--muted); font-size:var(--step--1); line-height:1.5; max-width:36ch}
+
+/* Shorter intro than .section__sub, which is sized for the sections
+   that carry the argument rather than the range. */
+.section__sub--tight{font-size:var(--step-0); margin-bottom:var(--sp-3); max-width:62ch}
+
+@media (min-width:36em){
+  .products{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3) var(--sp-4)}
+  .product .slot{aspect-ratio:1 / 1}
+}
+@media (min-width:60em){
+  .products{grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-4)}
+  .band--range{padding:var(--sp-5) 0}
+}
+
+
+/* 16. Trust signals -------------------------------------------- */
+.trust{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-2) var(--sp-3)}
+.trust li{align-items:start; font-size:var(--step--2); color:var(--ink)}
+.trust .label::before{margin-top:5px}
+.trust li.label--empty{grid-column:1 / -1}
+.coverage{
+  margin:var(--sp-3) 0 0; padding-top:var(--sp-3);
+  border-top:1px solid var(--line); color:var(--muted); font-size:var(--step--1);
+}
+
+@media (min-width:60em){
+  .trust{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .trust li{font-size:var(--step--1)}
+}
+
+
+/* 17. FAQ accordion -------------------------------------------- */
+.acc{border-top:1px solid var(--line)}
+.acc__item{border-bottom:1px solid var(--line)}
+.acc__item h3{margin:0; font-size:inherit}
+.acc__btn{
+  width:100%; min-height:56px; padding:16px 40px 16px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  background:none; border:0; cursor:pointer; position:relative;
+  font:inherit; font-size:var(--step-1); font-weight:600; text-align:left; color:var(--ink);
+}
+.acc__icon{
+  position:absolute; right:2px; top:50%; transform:translateY(-50%);
+  width:14px; height:14px; flex:0 0 auto; max-width:none;
+}
+.acc__icon::before,.acc__icon::after{
+  content:""; position:absolute; background:var(--ink); left:0; top:6px;
+  width:14px; height:2px; transition:transform .18s ease;
+}
+.acc__icon::after{transform:rotate(90deg)}
+.acc__btn[aria-expanded="true"] .acc__icon::after{transform:rotate(0deg)}
+.acc__panel{padding:0 0 var(--sp-3)}
+.acc__panel p:last-child{margin-bottom:0}
+
+
+/* 18. Bottom CTA ------------------------------------------------ */
+.close__tel{margin:var(--sp-3) 0 0; text-align:center; font-weight:600}
+
+
+/* 19. Footer ---------------------------------------------------- */
+.footer{
+  position:relative; overflow:hidden;
+  background:var(--sage); color:var(--ink);
+  padding:var(--sp-4) 0 var(--sp-3);
+}
+.footer::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:var(--grain); background-size:160px 160px; opacity:.05;
+}
+.footer__inner{position:relative; z-index:2}
+.footer .lbl{color:var(--ink)}
+.footer .label{color:var(--ink)}
+.footer a{text-decoration:none; color:var(--ink)}
+.footer :focus-visible{outline-color:var(--ink)}
+.footer__top{display:grid; gap:var(--sp-3)}
+.footer__mark{font-size:1.5rem; font-weight:700; line-height:1; margin:0 0 var(--sp-2)}
+/* Scoped so a text wordmark on any other page keeps its own line height. */
+.footer__mark:has(.footer__logo){line-height:0}
+.footer__logo{display:block; width:auto; height:clamp(28px, 4vw, 38px)}
+.col__row{margin:0 0 var(--sp-2)}
+.footer .ph{background:rgba(0,0,0,.25)}
+.footer__bottom{
+  margin-top:var(--sp-4); padding-top:var(--sp-3);
+  border-top:1px solid rgba(13,13,13,.2);
+  display:grid; gap:var(--sp-2); font-size:var(--step--1);
+}
+.footer__links{display:flex; flex-wrap:wrap; gap:10px 20px; align-items:center}
+.footer__copy{margin:0}
+
+@media (min-width:48em){
+  .footer{padding:var(--sp-5) 0 var(--sp-3)}
+  .footer__top{grid-template-columns:1fr 1.3fr 1fr; gap:var(--sp-4)}
+  .footer__bottom{grid-template-columns:1fr auto; align-items:center}
+}
+
+
+/* 20. Sticky bar ------------------------------------------------- */
+.stickybar{
+  position:fixed; left:0; right:0; bottom:0; z-index:100;
+  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background:var(--paper); border-top:1px solid var(--line); box-shadow:var(--shadow-3);
+  transform:translateY(110%); transition:transform .22s ease;
+}
+.stickybar.is-visible{transform:translateY(0)}
+.stickybar .btn{min-height:48px; padding:10px 18px; font-size:var(--step--1); width:auto; min-width:0}
+.stickybar .btn:first-child{padding-left:12px; padding-right:12px}
+.stickybar .ph{font-size:.6875rem; white-space:nowrap}
+
+@media (min-width:60em){
+  /* Desktop keeps a form in view most of the way down, so no bar. */
+  .stickybar{display:none}
+  body.has-stickybar{padding-bottom:0}
+}
+
+
+/* 21. Privacy and thank you pages -------------------------------- */
+.doc{padding:var(--sp-5) 0 var(--sp-6); background:var(--paper)}
+.doc h1{font-size:var(--step-4)}
+.doc h2{font-size:var(--step-2); margin-top:var(--sp-4)}
+.doc__meta{color:var(--muted); font-size:var(--step--1)}
+.doc ul{list-style:disc; padding-left:1.25rem; margin:0 0 var(--sp-3)}
+.doc li{margin-bottom:6px}
+.doc a{text-decoration:underline}
+.thanks{text-align:center; padding:var(--sp-6) 0}
+.thanks h1{font-size:var(--step-4)}
+.thanks .btn{margin-top:var(--sp-3)}
+
+
+/* 22. Reduced motion --------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms!important; animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+  .stickybar{transition:none}
+}

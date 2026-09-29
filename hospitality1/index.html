@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Still &amp; sparkling water systems for hospitality venues | MODA</title>
+<meta name="description" content="Chilled still and sparkling water on tap for hotels, restaurants, cafes and bars. Specified for your venue, installed by us, with filters and servicing covered.">
+
+<!-- REPLACE DOMAIN: the domain below appears in the canonical tag, the OG tags,
+     the Twitter tags and the JSON-LD, and again in privacy.html and thankyou.html.
+     Search for "https://example.com.au" across all three pages. -->
+<link rel="canonical" href="https://example.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com.au/">
+<meta property="og:title" content="Still &amp; sparkling water systems for hospitality venues | MODA">
+<meta property="og:description" content="Chilled still and sparkling from a single tap. Specified for your venue, installed by us, with filters and servicing covered.">
+<meta property="og:image" content="https://example.com.au/assets/img/og-image.jpg">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Still &amp; sparkling water systems for hospitality venues | MODA">
+<meta name="twitter:description" content="Chilled still and sparkling from a single tap. Specified for your venue, installed by us, with filters and servicing covered.">
+<meta name="twitter:image" content="https://example.com.au/assets/img/og-image.jpg">
+
+<link rel="icon" href="assets/img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon_48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon_64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon_128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon_256x256.png">
+<link rel="apple-touch-icon" sizes="256x256" href="favicon_256x256.png">
+
+<!-- Uncomment once the Matter woff2 files are sitting in /assets/fonts/.
+     Preloading them before they exist fires a 404 on every page load.
+<link rel="preload" href="assets/fonts/Matter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Matter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+-->
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#consultation">Skip to the booking form</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="masthead__mark" href="#top" aria-label="MODA, home">
+      <img class="masthead__logo" src="assets/img/modalogo.webp" alt="MODA"
+           width="2251" height="588" style="transform: scale(0.9); transform-origin: left center;">
+    </a>
+    <div class="masthead__cta">
+      <a class="btn btn--sm btn--ghost" id="tel-header" href="tel:+611800006632">1800 006 632</a>
+      <a class="btn btn--sm btn--primary masthead__book" id="cta-header" href="#consultation">Book a site consultation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section class="band band--hero" id="hero">
+
+    <!-- REPLACE IMAGE: assets/img/hero-header.jpg. Dark, landscape, at least
+         2400px wide. It is a real img rather than a CSS background so the
+         browser finds it early and it stays the LCP element. Decorative, so
+         alt is empty and the wrapper is hidden from assistive tech. -->
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/img/hero-header.jpg"
+           alt=""
+           width="2400" height="1350" fetchpriority="high">
+    </div>
+
+    <div class="wrap hero">
+
+      <div class="hero__copy">
+        <!-- Headline swaps by ad group via ?v=hotel|restaurant|cafe|bar.
+             With no parameter it renders the default line below. -->
+        <h1 class="hero__title" id="heroTitle">Still and sparkling water on tap for your venue</h1>
+        <p class="hero__sub">Chilled still and sparkling from a single tap, specified for your venue and installed by us. Filters, servicing and support all covered. Trusted by more than 2,000 Australian venues.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" id="cta-hero" href="#consultation">Book a site consultation</a>
+          <a class="btn btn--ghost" id="tel-hero" href="tel:+611800006632">Or call 1800 006 632</a>
+        </div>
+
+        <div class="herotrust">
+          <p class="herotrust__item">Certified to the highest industry standards</p>
+          <ul class="herotrust__logos">
+            <li><img src="assets/img/nsflogo.png" alt="NSF certified" width="480" height="480" loading="lazy"></li>
+            <li><img src="assets/img/isologo.png" alt="ISO certified" width="480" height="480" loading="lazy"></li>
+            <li><img src="assets/img/watermarklogo.png" alt="WaterMark certified" width="480" height="480" loading="lazy"></li>
+            <li><img src="assets/img/celogo.png" alt="CE certified" width="480" height="480" loading="lazy"></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ---- Primary conversion form ---- -->
+      <div class="formcard" id="consultation">
+        <h2 class="formcard__title">Let's have a conversation</h2>
+        <p class="formcard__intro">Tell us about your venue and what you're after. <b>No obligation.</b></p>
+
+        <!-- FORM ENDPOINT: submissions are posted to the HubSpot Forms API by
+             main.js. The portal ID, form GUID and the field mapping all live in
+             section 5 of main.js. One change, one place. -->
+        <form class="form" data-form="hero" method="post" action="#" novalidate>
+
+          <div class="field">
+            <label for="venue-hero">Venue name</label>
+            <input type="text" id="venue-hero" name="venue_name" autocomplete="organization" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="type-hero">Venue type</label>
+            <select id="type-hero" name="venue_type" data-venue-select required>
+              <option value="">Please choose</option>
+              <option value="hotel">Hotel</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="cafe">Cafe</option>
+              <option value="bar">Bar</option>
+              <option value="other">Other hospitality venue</option>
+            </select>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="name-hero">Your name</label>
+            <input type="text" id="name-hero" name="contact_name" autocomplete="name" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="email-hero">Email</label>
+            <input type="email" id="email-hero" name="email" inputmode="email" autocomplete="email" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="phone-hero">Phone</label>
+            <input type="tel" id="phone-hero" name="phone" inputmode="tel" autocomplete="tel" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="suburb-hero">Suburb</label>
+            <input type="text" id="suburb-hero" name="suburb" autocomplete="address-level2" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="notes-hero">Anything we should know? <span class="field__opt">Optional</span></label>
+            <textarea id="notes-hero" name="notes" rows="3"></textarea>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="hp-hero">Leave this empty</label>
+            <input type="text" id="hp-hero" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" id="submit-hero">Book a site consultation</button>
+        </form>
+
+        <div class="form__done" role="status" aria-live="polite" tabindex="-1" hidden data-success>
+          <h3>Thanks, that is booked in.</h3>
+          <p>A MODA specialist will be in touch to arrange a time to see your venue.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. SOCIAL PROOF
+       ============================================================ -->
+  <section class="band band--alt" id="proof">
+    <div class="wrap">
+      <p class="label">Proof</p>
+      <h2 class="section__title">Trusted by 2,000+ Australian hospitality venues</h2>
+      <p class="section__sub">Two decades of providing still and sparkling water solutions for hospitality.</p>
+
+      <div class="proof">
+        <div class="proof__video">
+          <div class="slot" style="--ratio: 16 / 9" data-slot data-caption="testimonial-yochi-poster.jpg">
+            <img src="assets/img/testimonial-yochi-poster.jpg"
+                 alt="Poster frame from the Yo-Chi customer testimonial video"
+                 width="1280" height="720" loading="lazy">
+          </div>
+        </div>
+
+        <div class="proof__quotes">
+          <figure class="quote quote--long">
+            <blockquote>MODA has helped Yo-Chi establish itself as a true third space; customers visit more often; new guests come in just for the water and through that connection become regular customers. Their service team has kept up with our rapid growth, forging a long and lasting partnership.</blockquote>
+            <figcaption>
+              Oliver Allis
+              <span class="quote__org">Yo-Chi</span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+
+      <!-- Client logo strip. Confirm MODA has written permission for each mark
+           before this goes live. Files sit in assets/img/logos/. -->
+      <ul class="logos" aria-label="A selection of venues using MODA">
+        <li><img src="assets/img/logos/calile.avif" alt="The Calile Hotel" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/marriott.avif" alt="Marriott" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/three-blue-ducks.avif" alt="Three Blue Ducks" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/fishbowl.avif" alt="Fishbowl" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/yo-chi.avif" alt="Yo-Chi" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/maybe-sammy.webp" alt="Maybe Sammy" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/accor.avif" alt="Accor" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/mercedes.avif" alt="Mercedes-Benz" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/deloitte.avif" alt="Deloitte" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/bentleygroup.avif" alt="Bentley Group" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/sainthaven.avif" alt="Saint Haven" width="360" height="180" loading="lazy"></li>
+        <li><img src="assets/img/logos/bistromorgan.avif" alt="Bistro Morgan" width="360" height="180" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. BUILT FOR YOUR VENUE
+       ============================================================ -->
+  <section class="band" id="venues">
+    <div class="wrap">
+      <p class="label">Built for your venue</p>
+      <h2 class="section__title">Built for the way your venue actually runs</h2>
+      <p class="section__sub">We work only in commercial hospitality, so the system is specified around your service, your space and your peak.</p>
+
+      <ul class="venues" id="venueGrid">
+        <li class="venue" data-venue="hotel">
+          <div class="slot" style="--ratio: 4 / 5" data-slot data-caption="venue-hotel.jpg">
+            <img src="assets/img/venue-hotel.jpg" alt="MODA tap installed in a hotel restaurant" width="800" height="1000" loading="lazy">
+          </div>
+          <h3 class="h-card">Hotels</h3>
+          <p>Pure still and sparkling across the whole property, from guest rooms to restaurant, gym and events. One consistent water offering, no cartons moving between floors.</p>
+        </li>
+
+        <li class="venue" data-venue="restaurant">
+          <div class="slot" style="--ratio: 4 / 5" data-slot data-caption="venue-restaurant.jpg">
+            <img src="assets/img/venue-restaurant.jpg" alt="MODA bottles poured at a set restaurant table" width="800" height="1000" loading="lazy">
+          </div>
+          <h3 class="h-card">Restaurants</h3>
+          <p>Chilled still and sparkling poured to the table in seconds. Better margin on every pour, and no bottle stock taking up storage you do not have.</p>
+        </li>
+
+        <li class="venue" data-venue="cafe">
+          <div class="slot" style="--ratio: 4 / 5" data-slot data-caption="venue-cafe.jpg">
+            <img src="assets/img/venue-cafe.jpg" alt="MODA tap on a busy cafe counter" width="800" height="1000" loading="lazy">
+          </div>
+          <h3 class="h-card">Cafes</h3>
+          <p>A tap that fits a tight bench and a fast counter. Consistent, great-tasting water without staff lifting, chilling or rotating a single bottle.</p>
+        </li>
+
+        <li class="venue" data-venue="bar">
+          <div class="slot" style="--ratio: 4 / 5" data-slot data-caption="venue-bar.jpg">
+            <img src="assets/img/venue-bar.jpg" alt="MODA still and sparkling font mounted behind a bar" width="800" height="1000" loading="lazy">
+          </div>
+          <h3 class="h-card">Bars</h3>
+          <p>No stock to order, rotate or carry to the bar. Pour a bottle in under ten seconds, right through your busiest service.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. HOW IT WORKS
+       ============================================================ -->
+  <section class="band band--alt" id="how">
+    <div class="wrap">
+      <p class="label">How it works</p>
+      <h2 class="section__title">From first call to pouring, here is what happens</h2>
+
+      <div class="how">
+        <ol class="steps">
+          <li class="step">
+            <span class="step__n">01</span>
+            <h3>Tell us about your venue</h3>
+            <p>Fill in the form or call us. We ask about your venue type, your space and your service, so the visit is useful.</p>
+          </li>
+          <li class="step">
+            <span class="step__n">02</span>
+            <h3>We come and see the space</h3>
+            <p>A MODA specialist visits your site, checks the fit under your bench, and specifies the right system and capacity for your volume.</p>
+          </li>
+          <li class="step">
+            <span class="step__n">03</span>
+            <h3>We install it for you</h3>
+            <p>Installation is included and scheduled around your trading hours, so your service is not interrupted.</p>
+          </li>
+          <li class="step">
+            <span class="step__n">04</span>
+            <h3>We keep it running</h3>
+            <p>Filters, preventative maintenance and priority support are all covered from day one. You never have to think about it again.</p>
+          </li>
+        </ol>
+
+        <div class="how__media">
+          <div class="slot" style="--ratio: 4 / 5" data-slot data-caption="how-technician-onsite.jpg">
+            <img src="assets/img/how-technician-onsite.jpg" alt="A MODA technician on site during a venue consultation" width="800" height="1000" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <p class="band__cta"><a class="btn btn--primary" id="cta-how" href="#consultation">Book a site consultation</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. WHAT IS INCLUDED
+       ============================================================ -->
+  <section class="band" id="included">
+    <div class="wrap">
+      <p class="label">What is included</p>
+      <h2 class="section__title">Everything included. Nothing else to buy.</h2>
+      <p class="section__sub section__sub--strong">Every MODA system is specified, installed and looked after by us. Everything below is covered from day one, with no separate installers or service people to chase.</p>
+
+      <ul class="includes">
+        <li><h3 class="h-card">The system itself</h3><p>High-capacity Italian-engineered water systems, specified perfectly to your venue design and requirements.</p></li>
+        <li><h3 class="h-card">Your tap, your finish</h3><p>Choose from a range of fonts and finishes so the tap suits your bar or counter. Every tap is built for constant commercial use.</p></li>
+        <li><h3 class="h-card">Installation</h3><p>Installed and commissioned by MODA. No separate installers or service people to chase.</p></li>
+        <li><h3 class="h-card">Filters and servicing</h3><p>Preventative maintenance and filter changes are scheduled by us and included. Nothing to order and nothing to remember.</p></li>
+        <li><h3 class="h-card">Priority support</h3><p>If something is wrong, you get a real person who owns the problem, not a queue.</p></li>
+        <li><h3 class="h-card">No plastic to deal with</h3><p>Across the MODA network we take more than ten million disposable bottles out of circulation every year. That is less stock, less waste and less to store.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5b. CUSTOMISATION OPTIONS
+       ============================================================ -->
+  <section class="band" id="customisation">
+
+    <!-- Material and finish swatches. Every finish is a CSS gradient, so
+         there is no image to supply and nothing extra to load. Sits outside
+         .wrap so the white runs edge to edge, with its own .wrap inside so
+         the content still lines up with the copy above. -->
+    <div class="finishes-band">
+      <div class="wrap">
+        <h3 class="finishes__title">A wide range of customisation options to fit your venue</h3>
+        <ul class="finishes">
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/chrome.png" alt="Chrome, glossy finish">
+            <p class="finish__name">Chrome</p>
+            <p class="finish__meta">Glossy</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/brass.png" alt="Brass, glossy finish">
+            <p class="finish__name">Brass</p>
+            <p class="finish__meta">Glossy</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/bronze.png" alt="Bronze, glossy finish">
+            <p class="finish__name">Bronze</p>
+            <p class="finish__meta">Glossy</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/copper.png" alt="Copper, glossy finish">
+            <p class="finish__name">Copper</p>
+            <p class="finish__meta">Glossy</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/black.png" alt="Black, matte finish">
+            <p class="finish__name">Black</p>
+            <p class="finish__meta">Matte</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/white.png" alt="White, matte finish">
+            <p class="finish__name">White</p>
+            <p class="finish__meta">Matte</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/brushednickel.png" alt="Nickel, brushed finish">
+            <p class="finish__name">Nickel</p>
+            <p class="finish__meta">Brushed</p>
+          </li>
+          <li class="finish">
+            <img class="finish__swatch" src="assets/img/swatches/wood.png" alt="Timber finish">
+            <p class="finish__name">Timber</p>
+            <p class="finish__meta">Natural</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- REPLACE IMAGE: assets/img/styles.jpg, the full strip of tap styles
+         at 3000 x 500. Sits outside .wrap so it runs edge to edge, and is
+         rendered twice so the auto-scroll can loop without a visible jump.
+         The second copy is hidden from assistive tech. -->
+    <div class="stylestrip" data-stylestrip>
+      <div class="stylestrip__track" data-stylestrip-track>
+        <img src="assets/img/styles.jpg" alt="The MODA range of tap styles and finishes"
+             width="3000" height="500" draggable="false">
+        <img src="assets/img/styles.jpg" alt="" aria-hidden="true"
+             width="3000" height="500" draggable="false">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. SERVICE IS OUR DIFFERENCE
+       ============================================================ -->
+  <section class="band band--statement" id="service">
+    <div class="wrap">
+      <p class="label">Service is the difference</p>
+      <h2 class="section__title section__title--caps">You deal with a person</h2>
+      <p class="section__sub">The best system in the world is only as good as the people behind it. We are an independent Australian company that has done one thing for two decades, so when something goes wrong you deal with a person, not a department.</p>
+      <p class="prose">Every MODA system comes with preventative maintenance and priority support built in. You get a real person who takes ownership of your issue, and if they cannot solve it, they escalate it. No being passed between accounts, service and support to get a tap working before dinner service.</p>
+
+      <ul class="team">
+        <li>
+          <div class="slot slot--square" style="--ratio: 1 / 1" data-slot data-caption="team-1.jpg">
+            <img src="assets/img/team-1.jpg" alt="MODA team member" width="600" height="600" loading="lazy">
+          </div>
+        </li>
+        <li>
+          <div class="slot slot--square" style="--ratio: 1 / 1" data-slot data-caption="team-2.jpg">
+            <img src="assets/img/team-2.jpg" alt="MODA team member" width="600" height="600" loading="lazy">
+          </div>
+        </li>
+        <li>
+          <div class="slot slot--square" style="--ratio: 1 / 1" data-slot data-caption="team-3.jpg">
+            <img src="assets/img/team-3.jpg" alt="MODA team member" width="600" height="600" loading="lazy">
+          </div>
+        </li>
+      </ul>    </div>
+  </section>
+
+  <!-- ============================================================
+       6b. YOUR ONE STOP WATER SHOP
+       REPLACE IMAGES: six product shots in /assets/img/, square,
+       800 x 800. Until they land, the slots show their filename.
+       ============================================================ -->
+  <section class="band band--alt band--range" id="range">
+    <div class="wrap">
+      <p class="label">The full range</p>
+      <h2 class="section__title">Your one stop water shop</h2>
+      <p class="section__sub section__sub--tight">Dispensers, boiling water taps and bottles for every part of your site, all supplied and serviced by us.</p>
+
+      <ul class="products">
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-glassware.jpg">
+            <img src="assets/img/product-glassware.jpg" alt="MODA glassware" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Glassware</h3>
+          <p>High quality, durable and designed to elevate the table.</p>
+        </li>
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-bottles.jpg">
+            <img src="assets/img/product-bottles.jpg" alt="MODA glass bottles in a branded bottle crate" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Bottles and bottle crates</h3>
+          <p>Helping you stay organised and save space.</p>
+        </li>
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-boiling-tap.jpg">
+            <img src="assets/img/product-boiling-tap.jpg" alt="MODA boiling water tap in a matte black finish" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Boiling water taps</h3>
+          <p>Hot water without disruption as a convenient addition to your MODA tap.</p>
+        </li>
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-push-button.jpg">
+            <img src="assets/img/product-push-button.jpg" alt="MODA push-button water dispenser" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Push-button dispensers</h3>
+          <p>Including portion control so you can fill to a pre-set level with the push of a button.</p>
+        </li>
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-wall-mounted.jpg">
+            <img src="assets/img/product-wall-mounted.jpg" alt="Brushed stainless steel MODA wall-mounted dispenser" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Wall-mounted dispensers</h3>
+          <p>Filtered chilled and sparkling on demand without losing bench space.</p>
+        </li>
+
+        <li class="product">
+          <div class="slot" data-slot data-caption="product-alto.jpg">
+            <img src="assets/img/product-alto.jpg" alt="MODA Alto free standing water dispenser in an office" width="800" height="800" loading="lazy">
+          </div>
+          <h3 class="h-card">Alto free standing</h3>
+          <p>Unlimited filtered water with no bottles to swap.</p>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. TRUST SIGNALS
+       ============================================================ -->
+  <section class="band band--tight" id="trust">
+    <div class="wrap">
+      <ul class="trust">
+        <li class="label">Two decades in water</li>
+        <li class="label">2,000+ hospitality venues</li>
+        <li class="label">Independent and Australian owned</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. FAQ
+       ============================================================ -->
+  <section class="band band--alt" id="faq">
+    <div class="wrap wrap--narrow">
+      <p class="label">Questions</p>
+      <h2 class="section__title">Questions venues ask us</h2>
+
+      <div class="acc">
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq1" id="faq1-btn">How much does it cost?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq1" role="region" aria-labelledby="faq1-btn" hidden>
+            <p>Cost depends on your venue's size and volume, and on the tap and finish you choose, which is why we specify it on site rather than quote a number that turns out to be wrong. There is no separate bill for installation, filters or servicing, and no large upfront outlay.</p>
+          </div>
+        </div>
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq2" id="faq2-btn">Will it fit in my venue?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq2" role="region" aria-labelledby="faq2-btn" hidden>
+            <p>The system sits under the bench and the tap mounts on your counter or bar. Space is one of the first things we check on the site visit, and we specify around what you have rather than asking you to make room.</p>
+          </div>
+        </div>
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq3" id="faq3-btn">How disruptive is the installation?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq3" role="region" aria-labelledby="faq3-btn" hidden>
+            <p>Installation is handled by MODA and scheduled around your service. You will be pouring the same day the system goes in.</p>
+          </div>
+        </div>
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq4" id="faq4-btn">What happens if it stops working during service?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq4" role="region" aria-labelledby="faq4-btn" hidden>
+            <p>You call your MODA contact and they take ownership of it. Preventative maintenance is scheduled to stop most problems before they happen, and priority support covers the rest.</p>
+          </div>
+        </div>
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq5" id="faq5-btn">Do you cover my area?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq5" role="region" aria-labelledby="faq5-btn" hidden>
+            <p>We service 95% of Australia.</p>
+          </div>
+        </div>
+
+        <div class="acc__item">
+          <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq6" id="faq6-btn">How is the system supplied?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+          <div class="acc__panel" id="faq6" role="region" aria-labelledby="faq6-btn" hidden>
+            <p>The system is supplied, installed and maintained by MODA under a service agreement. This is a quality control measure that ensures the MODA product is always on point, pouring and tasting as it should for the people that matter most; you and your customers.
+</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. BOTTOM CTA
+       ============================================================ -->
+  <section class="band band--close" id="book">
+    <div class="wrap wrap--narrow">
+      <p class="label">Next step</p>
+      <h2 class="section__title">Let's come and look at your space</h2>
+      <p class="section__sub">Book a site consultation and we will specify the right system for your venue. No obligation, and no pressure to decide on the day.</p>
+
+      <div class="formcard formcard--close">
+        <form class="form" data-form="close" method="post" action="#" novalidate>
+
+          <div class="field">
+            <label for="venue-close">Venue name</label>
+            <input type="text" id="venue-close" name="venue_name" autocomplete="organization" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="type-close">Venue type</label>
+            <select id="type-close" name="venue_type" data-venue-select required>
+              <option value="">Please choose</option>
+              <option value="hotel">Hotel</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="cafe">Cafe</option>
+              <option value="bar">Bar</option>
+              <option value="other">Other hospitality venue</option>
+            </select>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="name-close">Your name</label>
+            <input type="text" id="name-close" name="contact_name" autocomplete="name" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="email-close">Email</label>
+            <input type="email" id="email-close" name="email" inputmode="email" autocomplete="email" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="phone-close">Phone</label>
+            <input type="tel" id="phone-close" name="phone" inputmode="tel" autocomplete="tel" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="suburb-close">Suburb</label>
+            <input type="text" id="suburb-close" name="suburb" autocomplete="address-level2" required>
+            <p class="field__error" data-error></p>
+          </div>
+
+          <div class="field">
+            <label for="notes-close">Anything we should know? <span class="field__opt">Optional</span></label>
+            <textarea id="notes-close" name="notes" rows="3"></textarea>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="hp-close">Leave this empty</label>
+            <input type="text" id="hp-close" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" id="submit-close">Book a site consultation</button>
+        </form>
+
+        <div class="form__done" role="status" aria-live="polite" tabindex="-1" hidden data-success>
+          <h3>Thanks, that is booked in.</h3>
+          <p>A MODA specialist will be in touch to arrange a time to see your venue.</p>
+        </div>
+      </div>
+
+      <p class="close__tel">
+        <a id="tel-close" href="tel:+611800006632">Or call 1800 006 632</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     10. FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__top">
+
+      <div class="col">
+        <p class="footer__mark">
+          <img class="footer__logo" src="assets/img/modalogo.webp" alt="MODA"
+               width="2251" height="588" loading="lazy">
+        </p>
+        <p class="col__row"><span class="lbl">Legal / trading name</span>Water Vend Pty Ltd</p>
+        <p class="col__row"><span class="lbl">ABN</span>15 145 358 836</p>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Contact</h2>
+        <p class="col__row"><span class="lbl">Phone</span><a id="tel-footer" href="tel:+611800006632">1800 006 632</a></p>
+        <p class="col__row"><span class="lbl">Email, national</span><a class="eml" data-u="info" data-d="modawater.com"></a></p>
+        <p class="col__row"><span class="lbl">VIC &amp; SA</span><a class="eml" data-u="vic" data-d="modawater.com"></a></p>
+        <p class="col__row"><span class="lbl">NSW, ACT, WA &amp; TAS</span><a class="eml" data-u="hello" data-d="modawater.com"></a></p>
+        <p class="col__row"><span class="lbl">QLD</span><a class="eml" data-u="qld" data-d="modawater.com"></a></p>
+        <p class="col__row"><span class="lbl">Address</span>15 Tenterden Rd, Botany NSW 2019</p>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Follow</h2>
+        <p class="col__row"><a href="https://instagram.com/moda.water" rel="noopener">Instagram</a></p>
+        <p class="col__row"><a href="https://facebook.com/moda.water" rel="noopener">Facebook</a></p>
+        <p class="col__row"><a href="https://linkedin.com/company/modawater" rel="noopener">LinkedIn</a></p>
+        <p class="col__row"><a href="https://share.google/PyXbDDXTpH6Lkrqee" rel="noopener">Google Business Profile</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <ul class="footer__links">
+        <li><a href="privacy.html">Privacy policy</a></li>
+      </ul>
+      <p class="footer__copy">&copy; <span id="year">2026</span> Water Vend Pty Ltd</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky bar. Hidden at the top of the page, appears past the hero,
+     hides again whenever a form is on screen. -->
+<div class="stickybar" id="stickybar">
+  <a class="btn btn--primary" id="cta-sticky" href="#consultation">Book a site consultation</a>
+  <a class="btn btn--ghost" id="tel-sticky" href="tel:+611800006632">1800 006 632</a>
+</div>
+
+<!-- REPLACE: the fields marked REPLACE below are invisible to visitors but are read
+     by Google. Do not leave them as they are once the client comes back. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "MODA",
+  "legalName": "Water Vend Pty Ltd",
+  "url": "https://example.com.au/",
+  "telephone": "+611800006632",
+  "email": "info@modawater.com",
+  "foundingDate": "2006",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Tenterden Rd",
+    "addressLocality": "Botany",
+    "addressRegion": "NSW",
+    "postalCode": "2019",
+    "addressCountry": "AU"
+  },
+  "areaServed": { "@type": "Country", "name": "Australia" },
+  "sameAs": [
+    "https://instagram.com/moda.water",
+    "https://facebook.com/moda.water",
+    "https://linkedin.com/company/modawater"
+  ],
+  "description": "Still and sparkling water systems for commercial hospitality venues, supplied on a service agreement covering installation, filters, servicing and support."
+}
+</script>
+
+</body>
+</html>
