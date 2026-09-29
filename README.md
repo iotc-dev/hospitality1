@@ -28,14 +28,27 @@ Vercel auto-deploys on every push to `main`, so the page is live at
 ## vercel.json
 
 ```json
-{ "trailingSlash": true }
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/", "destination": "/hospitality1/", "permanent": false }
+  ]
+}
 ```
 
-Every asset path in these pages is **relative**, so a request for `/hospitality1`
-without the trailing slash would resolve `assets/css/styles.css` against the root
-instead of the page folder and the CSS, fonts and images would 404.
+**`trailingSlash`** — every asset path in these pages is **relative**, so a request
+for `/hospitality1` without the trailing slash would resolve `assets/css/styles.css`
+against the root instead of the page folder and the CSS, fonts and images would 404.
 `trailingSlash: true` makes Vercel redirect `/hospitality1` → `/hospitality1/`,
 which keeps the relative paths correct. Do not remove it.
+
+**`redirects`** — there is no page at the repo root, so the bare domain would
+otherwise return a Vercel 404. This sends `/` to the current live page.
+
+It is deliberately `"permanent": false` (a 307, not a 308). A permanent redirect
+gets cached hard by browsers and is painful to undo, and the root is expected to
+change once there is more than one page here. When a second page goes live, either
+repoint `destination` or replace the redirect with a real root `index.html`.
 
 ## Working on the designer's files
 
