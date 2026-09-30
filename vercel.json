@@ -1,1 +1,6 @@
-{ "trailingSlash": true }
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/", "destination": "/hospitality1/", "permanent": false }
+  ]
+}
